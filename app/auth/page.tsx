@@ -6,6 +6,9 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { UserAuthForm } from "@/components/user-auth-form";
 
+import LogoPackedInDark from "@/public/logo-packedin-dark.png";
+import LogoPackedIn from "@/public/logo-packedin.png";
+
 export const metadata: Metadata = {
   title: "Authentication",
   description: "Authentication forms built using the components.",
@@ -25,7 +28,26 @@ export default function AuthenticationPage() {
           Login
         </Link>
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
-          <div className="absolute inset-0 bg-zinc-900" />
+          {/* Three ways to do the same thing , add background */}
+          {/* I also added gradient in the third one to display the text better */}
+          {/* <div className="absolute inset-0 bg-zinc-900" /> */}
+          {/* <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url('/9.png')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          /> */}
+          <div className="absolute inset-0">
+            <Image
+              src="/9.png"
+              layout="fill"
+              objectFit="cover"
+              alt="Background Image"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
+          </div>
           <div className="relative z-20 flex items-center text-lg font-medium">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -39,8 +61,17 @@ export default function AuthenticationPage() {
             >
               <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
             </svg>
-            Acme Inc
+            Packedin.tn Inc
           </div>
+          {/* I need this only when background is zink black but currently it's an image */}
+          {/* <div className="relative z-20 mt-auto flex justify-center items-center w-42 mb-2">
+            <Image
+              src={LogoPackedInDark}
+              width={LogoPackedInDark.width}
+              height={LogoPackedInDark.height}
+              alt={"LogoPackedInDark"}
+            />
+          </div> */}
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
               <p className="text-lg">
@@ -55,6 +86,14 @@ export default function AuthenticationPage() {
         <div className="lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
+              <div className="lg:hidden flex justify-center items-center w-42 mb-2">
+                <Image
+                  src={LogoPackedIn}
+                  width={LogoPackedIn.width}
+                  height={LogoPackedIn.height}
+                  alt={"LogoPackedIn"}
+                />
+              </div>
               <h1 className="text-2xl font-semibold tracking-tight">
                 Create an account
               </h1>

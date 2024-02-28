@@ -17,7 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "h-screen")}>{children}</body>
+      <body
+        className={cn(inter.className, "h-screen", "max-w-[2560px] mx-auto")}
+      >
+        {/* 2560 is the largest possible, right ? */}
+        {children}
+      </body>
     </html>
   );
 }
