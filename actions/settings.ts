@@ -14,7 +14,7 @@ export const SettingsAction = async (
   if (!currentUser) return { error: "Unautorized" };
 
   // to prevent leftovers from the session
-  const dbUser = await getUserById(currentUser.id);
+  const dbUser = await getUserById(currentUser.id as string);
 
   if (!dbUser) return { error: "Unautorized" };
 

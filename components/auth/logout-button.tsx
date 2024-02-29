@@ -5,7 +5,7 @@ import { useState } from "react";
 import { BeatLoader } from "react-spinners";
 import { Button } from "../ui/button";
 import { logout } from "@/actions/logout";
-import { Avatar } from "@radix-ui/react-avatar";
+import { Avatar } from "@/components/ui/avatar";
 
 interface LogoutButtonProps {
   children: React.ReactNode;
