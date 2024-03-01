@@ -90,7 +90,7 @@ export default function AuthenticationLayout({
                 &ldquo;testing account : badis9611@gmail.com , same for
                 pass.&rdquo;
               </p>
-              <footer className="text-sm">Sofia Davis</footer>
+              <footer className="text-sm">By Developers</footer>
             </blockquote>
           </div>
         </div>
