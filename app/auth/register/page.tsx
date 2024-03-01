@@ -1,4 +1,5 @@
 import { Logo } from "@/components/Logo";
+import { Social } from "@/components/auth/social";
 import { UserRegisterForm } from "@/components/user-register-form";
 import Link from "next/link";
 
@@ -14,11 +15,12 @@ export default function RegisterPage() {
             Create an account
           </h1>
           <p className="text-sm text-muted-foreground">
-            Enter your email below to create your account, you will recieve an
-            email with your password
+            Enter your email and other informations to create your account, you
+            will recieve a verification email to confirm your registration
           </p>
         </div>
         <UserRegisterForm />
+        <Social />
         <p className="px-8 text-center text-sm text-muted-foreground">
           By clicking continue, you agree to our{" "}
           <Link
