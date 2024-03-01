@@ -86,6 +86,10 @@ export default function AuthenticationLayout({
                 helped me deliver stunning designs to my clients faster than
                 ever before.&rdquo;
               </p>
+              <p className="text-lg">
+                &ldquo;testing account : badis9611@gmail.com , same for
+                pass.&rdquo;
+              </p>
               <footer className="text-sm">Sofia Davis</footer>
             </blockquote>
           </div>

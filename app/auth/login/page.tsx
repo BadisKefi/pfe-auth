@@ -22,7 +22,7 @@ export default function RegisterPage() {
         <UserLoginForm />
         <Social />
         <p className="px-8 text-center text-sm text-muted-foreground">
-          don't have an account ? click{" "}
+          don&apos;t have an account ? click{" "}
           <Link
             href="/auth/register"
             className="underline underline-offset-4 hover:text-primary"
