@@ -87,8 +87,12 @@ export default function AuthenticationLayout({
                 faster than ever before.&rdquo;
               </p>
               <p className="text-lg">
-                &ldquo;testing account : badis9611@gmail.com , same for
-                pass.&rdquo;
+                &ldquo;login for testing with admin : badis.web.dev@gmail.com &
+                same for password.&rdquo;
+              </p>
+              <p className="text-lg">
+                &ldquo;login for testing with moderator : badiskefi@gmail.com &
+                same for password.&rdquo;
               </p>
               <footer className="text-sm">By Developers</footer>
             </blockquote>

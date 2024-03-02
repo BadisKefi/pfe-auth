@@ -8,7 +8,11 @@ import { useTheme } from "next-themes";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 
-export function Logo({ size }: { size: "sm" | "lg" }) {
+interface LogoProps extends React.HTMLAttributes<HTMLDivElement> {
+  size: "sm" | "lg";
+}
+
+export function Logo({ size, className }: LogoProps) {
   const { theme, systemTheme } = useTheme();
   function extractLogoFromPureTheme(
     t: string | undefined,
@@ -26,6 +30,7 @@ export function Logo({ size }: { size: "sm" | "lg" }) {
       src={extractLogoFromPureTheme(theme, systemTheme, size === "sm")}
       width={LogoPackedIn.width}
       height={LogoPackedIn.height}
+      className={className}
       alt={"LogoPackedIn"}
     />
   );

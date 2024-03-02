@@ -21,6 +21,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { useTheme } from "next-themes";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { UserButton } from "@/components/auth/user-button";
+import { Logo } from "@/components/Logo";
 
 interface DashboardProps {
   defaultLayout: number[] | undefined;
@@ -88,16 +89,9 @@ const Dashboard = ({
                 <div className="h-[22px]"></div>
 
                 <div className="flex items-center justify-center">
-                  <Image
-                    src={
-                      extractLogoFromPureThemeAndCollapseState(
-                        theme,
-                        systemTheme,
-                        isCollapsed
-                      ) as StaticImport
-                    }
+                  <Logo
+                    size={isCollapsed ? "sm" : "lg"}
                     className="h-11 w-auto"
-                    alt={"LogoPackedIn"}
                   />
                 </div>
                 <div className="h-[22px]"></div>
