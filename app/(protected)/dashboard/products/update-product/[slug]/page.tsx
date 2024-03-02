@@ -2,6 +2,7 @@ import { ReadProductById } from "@/actions/product-action";
 import { GoBackToListingProductsButton } from "@/components/go-back-to-listing-products-button";
 import { Separator } from "@/components/ui/separator";
 import { UpdateProductForm } from "@/components/update-product-form";
+import { Category } from "@/models";
 // import { UpdateProductForm } from "@/components/update-product-form";
 const UpdateProductPage = async ({ params }: { params: { slug: string } }) => {
   const res = await ReadProductById({ id: params.slug });
