@@ -38,6 +38,7 @@ import {
 } from "./ui/command";
 import { CheckIcon } from "lucide-react";
 import { ReadCategories } from "@/actions/category-action";
+import { Category } from "@/models";
 
 export const CreateProductForm = () => {
   const router = useRouter();

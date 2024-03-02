@@ -25,6 +25,7 @@ import { UpdateCategory } from "@/actions/category-action";
 import { FileState } from "./MultiImageDropzoneTwoSingle";
 import { MultiImageDropzoneUsageTwoSingle } from "./MultiImageDropzoneUsageTwoSingle";
 import { Textarea } from "./ui/textarea";
+import { Category } from "@/models";
 
 export const UpdateCategoryForm = ({ category }: { category: Category }) => {
   const router = useRouter();

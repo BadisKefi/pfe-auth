@@ -36,6 +36,7 @@ import { UpdateProduct } from "@/actions/product-action";
 import { FileState, MultiImageDropzoneTwo } from "./MultiImageDropzoneTwo";
 import { MultiImageDropzoneUsageTwo } from "./MultiImageDropzoneUsageTwo";
 import { ReadCategories } from "@/actions/category-action";
+import { Category, Product } from "@/models";
 
 export const UpdateProductForm = ({
   product,

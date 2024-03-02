@@ -1,4 +1,6 @@
-type Product = {
+import { UserRole } from "@prisma/client";
+
+export type Product = {
   id?: string;
   label?: string;
   description?: string;
@@ -18,7 +20,7 @@ type Product = {
   category?: Category;
 };
 
-type Category = {
+export type Category = {
   id: string;
   label: string;
   description?: string;
@@ -27,4 +29,13 @@ type Category = {
   createdAt?: Date;
   updatedAt?: Date;
   products?: Product[];
+};
+
+export type User = {
+  id: string;
+  name: string;
+  isTwoFactorEnabled: boolean;
+  role: UserRole;
+  email: string;
+  password: string;
 };
