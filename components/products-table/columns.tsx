@@ -17,7 +17,6 @@ import { DataTableRowActions } from "./data-table-row-actions";
 import { z } from "zod";
 import { ProductTableSchema } from "@/schemas";
 import Image from "next/image";
-import DrawerForTableImages from "../DrawerForTableImages";
 
 export const columns: ColumnDef<z.infer<typeof ProductTableSchema>>[] = [
   {

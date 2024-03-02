@@ -17,7 +17,7 @@ import LogoPackedInDark from "@/public/logo-packedin-dark.png";
 import LogoPackedInSquareDark from "@/public/logo-packedin-square-dark.png";
 import React from "react";
 import Image from "next/image";
-import { ModeToggle } from "@/components/ModeToggle";
+import { ModeToggle } from "@/components/mode-toggle";
 import { useTheme } from "next-themes";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { UserButton } from "@/components/auth/user-button";
@@ -124,7 +124,7 @@ const Dashboard = ({
                 />
               </div>
               <div className="flex justify-center items-center gap-2 flex-col mb-2">
-                <ModeToggle isCollapsed={isCollapsed} />
+                <ModeToggle />
                 <div>
                   <UserButton />
                 </div>

@@ -6,18 +6,6 @@ import { FormError } from "@/components/form-error";
 import { UserButton } from "@/components/auth/user-button";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
-  const role = await getCurrentRole();
-
-  if (role && role !== UserRole.ADMIN) {
-    return (
-      <div className="w-screen h-screen flex justify-center items-center flex-col gap-2">
-        <UserButton />
-        <FormError message="go away hacker!" />
-
-        <FormError message="you are not allowed in this place" />
-      </div>
-    );
-  }
   const layout = cookies().get("react-resizable-panels:layout");
   const collapsed = cookies().get("react-resizable-panels:collapsed");
   const defaultLayout = layout ? JSON.parse(layout.value) : [265, 1366];
