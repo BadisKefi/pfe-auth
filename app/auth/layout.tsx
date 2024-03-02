@@ -82,9 +82,9 @@ export default function AuthenticationLayout({
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
               <p className="text-lg">
-                &ldquo;This library has saved me countless hours of work and
-                helped me deliver stunning designs to my clients faster than
-                ever before.&rdquo;
+                &ldquo;This web application has been created to simplify the
+                work and help stuff members to manage the website & elements
+                faster than ever before.&rdquo;
               </p>
               <p className="text-lg">
                 &ldquo;testing account : badis9611@gmail.com , same for
@@ -94,7 +94,7 @@ export default function AuthenticationLayout({
             </blockquote>
           </div>
         </div>
-        {/* this will be the left side of the page */}
+        {/* this will be the right side of the page */}
         {children}
       </div>
     </>
