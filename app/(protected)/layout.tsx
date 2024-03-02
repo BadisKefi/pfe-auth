@@ -18,7 +18,7 @@ export default async function RootLayout({
 }>) {
   const role = await getCurrentRole();
 
-  if (role && role !== UserRole.ADMIN) {
+  if (role && role !== UserRole.ADMIN && role !== UserRole.MODERATOR) {
     return (
       <div className="w-screen h-screen flex justify-center items-center flex-col gap-2">
         <UserButton />
