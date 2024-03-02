@@ -3,8 +3,8 @@ import { BeatLoader } from "react-spinners";
 
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState, useTransition } from "react";
-import { FormSuccess } from "./form-success";
-import { FormError } from "./form-error";
+import { FormSuccess } from "@/components/form-success";
+import { FormError } from "@/components/form-error";
 import { cn } from "@/lib/utils";
 import { newPassword } from "@/actions/new-password";
 import { NewPasswordSchema } from "@/schemas";
@@ -19,8 +19,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 interface UserNewPasswordFormProps
   extends React.HTMLAttributes<HTMLDivElement> {}
 

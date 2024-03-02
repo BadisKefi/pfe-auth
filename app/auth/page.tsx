@@ -1,5 +1,5 @@
 import { Logo } from "@/components/Logo";
-import { UserAuthForm } from "@/components/user-auth-form";
+import { UserAuthForm } from "@/components/auth/user-auth-form";
 import Link from "next/link";
 
 export default function RegisterPage() {

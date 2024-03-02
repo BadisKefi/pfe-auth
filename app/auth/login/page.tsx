@@ -1,9 +1,9 @@
 import { Logo } from "@/components/Logo";
 import { Social } from "@/components/auth/social";
-import { UserLoginForm } from "@/components/user-login-form";
+import { UserLoginForm } from "@/components/auth/user-login-form";
 import Link from "next/link";
 
-export default function RegisterPage() {
+export default function LoginPage() {
   return (
     <div className="pt-24 lg:p-8">
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">

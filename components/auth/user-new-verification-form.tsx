@@ -4,8 +4,8 @@ import { BeatLoader } from "react-spinners";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { newVerification } from "@/actions/new-verification";
-import { FormSuccess } from "./form-success";
-import { FormError } from "./form-error";
+import { FormSuccess } from "@/components/form-success";
+import { FormError } from "@/components/form-error";
 import { cn } from "@/lib/utils";
 
 interface UserNewVerificationFormProps

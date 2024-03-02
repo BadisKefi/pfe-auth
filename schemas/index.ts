@@ -1,6 +1,45 @@
 import { UserRole } from "@prisma/client";
 import * as z from "zod";
 
+// main
+
+export const ProductFormSchema = z.object({
+  label: z.string().min(1, { message: "product label is required" }),
+  price: z.coerce.number().min(0.01, { message: "product price is required" }),
+  images: z.array(z.string().url()).optional(),
+  description: z.string().optional(),
+  detailedDescription: z.string().optional(),
+  informations: z.string().optional(),
+  category: z.string({
+    required_error: "Please select a category.",
+  }),
+});
+export const ProductTableSchema = z.object({
+  id: z.string(),
+  label: z.string().min(1, { message: "product label is required" }),
+  price: z.number().min(0.01, { message: "product price is required" }),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+  images: z.array(z.string().url()).optional(),
+});
+
+export const CategoryFormSchema = z.object({
+  label: z.string().min(1, { message: "product label is required" }),
+  image: z.string().url().optional(),
+  description: z.string().optional(),
+  detailedDescription: z.string().optional(),
+});
+export const CategoryTableSchema = z.object({
+  id: z.string(),
+  label: z.string().min(1, { message: "product label is required" }),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+  image: z.string().url().optional(),
+  description: z.string().optional(),
+});
+
+// auth
+
 export const SettingsSchema = z
   .object({
     name: z.optional(z.string()),

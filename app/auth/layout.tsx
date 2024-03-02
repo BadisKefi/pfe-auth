@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { UserAuthForm } from "@/components/user-auth-form";
+import { UserAuthForm } from "@/components/auth/user-auth-form";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Logo } from "@/components/Logo";
 

@@ -1,5 +1,5 @@
 import { Logo } from "@/components/Logo";
-import { UserResetForm } from "@/components/user-reset-form";
+import { UserResetForm } from "@/components/auth/user-reset-form";
 import Link from "next/link";
 
 export default function ResetPage() {

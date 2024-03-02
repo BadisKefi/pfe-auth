@@ -1,5 +1,5 @@
 import { Logo } from "@/components/Logo";
-import { UserErrorCard } from "@/components/user-error-card";
+import { UserErrorCard } from "@/components/auth/user-error-card";
 import Link from "next/link";
 
 export default function ErrorPage() {

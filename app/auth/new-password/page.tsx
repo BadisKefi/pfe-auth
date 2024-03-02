@@ -1,5 +1,5 @@
 import { Logo } from "@/components/Logo";
-import { UserNewPasswordForm } from "@/components/user-new-password-form";
+import { UserNewPasswordForm } from "@/components/auth/user-new-password-form";
 import Link from "next/link";
 
 export default function NewPasswordPage() {

@@ -1,5 +1,5 @@
 import { Logo } from "@/components/Logo";
-import { UserNewVerficiationForm } from "@/components/user-new-verification-form";
+import { UserNewVerficiationForm } from "@/components/auth/user-new-verification-form";
 import Link from "next/link";
 
 export default function NewVerificationPage() {
