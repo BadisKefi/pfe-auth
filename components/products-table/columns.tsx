@@ -15,10 +15,11 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 import { z } from "zod";
-import { ProductTableSchema } from "@/schemas";
+// import { ProductTableSchema } from "@/schemas";
+import { Product } from "@/models";
 import Image from "next/image";
 
-export const columns: ColumnDef<z.infer<typeof ProductTableSchema>>[] = [
+export const columns: ColumnDef<Product>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -121,6 +122,26 @@ export const columns: ColumnDef<z.infer<typeof ProductTableSchema>>[] = [
         <div>
           <span className="max-w-[500px] truncate font-medium">
             {row.getValue("price")} Dt
+          </span>
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: "Category.label",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Category" />
+    ),
+    cell: ({ row }) => {
+      console.log("original row :");
+      console.log(row.original);
+      console.log(row.original.Category?.label);
+      const categoryLabel = row.original.Category?.label;
+      return (
+        <div>
+          <span className="max-w-[500px] truncate font-medium">
+            {/* {row.getValue("Category.label")} */}
+            {categoryLabel}
           </span>
         </div>
       );

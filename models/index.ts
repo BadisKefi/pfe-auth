@@ -17,7 +17,7 @@ export type Product = {
   updatedAt?: Date;
   price?: number;
   soldedPrice?: number;
-  category?: Category;
+  Category?: Category;
 };
 
 export type Category = {

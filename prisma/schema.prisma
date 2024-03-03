@@ -57,6 +57,8 @@ model User {
   accounts              Account[]
   isTwoFactorAnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
 }
 
 model Account {

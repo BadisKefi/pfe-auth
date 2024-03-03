@@ -9,7 +9,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Nav } from "./nav";
-import { Boxes, Group, LayoutDashboard } from "lucide-react";
+import { Boxes, Group, LayoutDashboard, Users } from "lucide-react";
 
 import LogoPackedIn from "@/public/logo-packedin.png";
 import LogoPackedInSquare from "@/public/logo-packedin-square.png";
@@ -113,6 +113,11 @@ const Dashboard = ({
                       href: "/dashboard/categories",
                       title: "Categories",
                       icon: Group,
+                    },
+                    {
+                      href: "/dashboard/users",
+                      title: "Users",
+                      icon: Users,
                     },
                   ]}
                 />

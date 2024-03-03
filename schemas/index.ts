@@ -38,13 +38,24 @@ export const CategoryTableSchema = z.object({
   description: z.string().optional(),
 });
 
+export const UserTableSchema = z.object({
+  id: z.string().nullable(),
+  name: z.string().nullable(),
+  role: z.enum([UserRole.ADMIN, UserRole.USER, UserRole.MODERATOR]).nullable(),
+  email: z.string().email().nullable(),
+  createdAt: z.date().nullable(),
+  updatedAt: z.date().nullable(),
+  isActive: z.boolean().nullable(),
+  isTwoFactorAnabled: z.boolean().nullable(),
+});
+
 // auth
 
 export const SettingsSchema = z
   .object({
     name: z.optional(z.string()),
     isTwoFactorEnabled: z.optional(z.boolean()),
-    role: z.enum([UserRole.ADMIN, UserRole.USER]),
+    role: z.enum([UserRole.ADMIN, UserRole.USER, UserRole.MODERATOR]),
 
     email: z.optional(z.string().email()),
     password: z.optional(z.string().min(6)),

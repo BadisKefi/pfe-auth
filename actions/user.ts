@@ -26,13 +26,13 @@ export const ActiveToggelerUserById = async ({ id }: { id: String }) => {
     return { error: "couldn't toggle activation on user" };
   }
 };
-export const GetAllUsersWithoutPassword = async () => {
+export const ReadAllUsersWithoutPassword = async () => {
   try {
     const users = await db.user.findMany();
-    if (!users) return { error: "no users" };
-    return { users };
+    if (!users) return { error: "no users", data: null };
+    return { success: "got users", data: users };
   } catch (e) {
-    return { error: "couldn't get users" };
+    return { error: "couldn't get users", data: null };
   }
 };
 export const GetUserWithoutPasswordById = async ({ id }: { id: String }) => {

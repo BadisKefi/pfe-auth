@@ -45,6 +45,20 @@ export async function ReadProducts() {
     return { error: "something went wrong!", data: null };
   }
 }
+export async function ReadProductsWithCategories() {
+  try {
+    const products = await db.product.findMany({
+      include: {
+        Category: true,
+      },
+    });
+    if (!products || products.length === 0)
+      return { error: "no products found!", data: null };
+    return { success: "products found!", data: products };
+  } catch (e) {
+    return { error: "something went wrong!", data: null };
+  }
+}
 
 export async function ReadProductsWithLimit({
   page,
