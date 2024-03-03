@@ -13,6 +13,9 @@ export const ProductFormSchema = z.object({
   category: z.string({
     required_error: "Please select a category.",
   }),
+  stock: z.coerce
+    .number()
+    .min(0, { message: "product stock is required even if it's 0" }),
 });
 export const ProductTableSchema = z.object({
   id: z.string(),

@@ -75,6 +75,7 @@ export const CreateProductForm = () => {
       detailedDescription: "",
       informations: "",
       category: "",
+      stock: 0,
     },
   });
   const onSubmit = (values: z.infer<typeof ProductFormSchema>) => {
@@ -191,6 +192,24 @@ export const CreateProductForm = () => {
                     type="number"
                     disabled={isPending}
                     placeholder="00.00"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="stock"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Stock</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type="number"
+                    disabled={isPending}
+                    placeholder="000"
                   />
                 </FormControl>
                 <FormMessage />

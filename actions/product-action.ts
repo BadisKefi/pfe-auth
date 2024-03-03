@@ -15,6 +15,7 @@ export async function CreateProduct(values: z.infer<typeof ProductFormSchema>) {
     detailedDescription,
     informations,
     category,
+    stock,
   } = validatedFields.data;
 
   try {
@@ -27,6 +28,7 @@ export async function CreateProduct(values: z.infer<typeof ProductFormSchema>) {
         detailedDescription: detailedDescription ?? "",
         informations: informations ?? "",
         categoryId: category,
+        stock: stock,
       },
     });
     return { success: "product created!", data: createdProduct };

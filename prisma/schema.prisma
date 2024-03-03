@@ -24,6 +24,7 @@ model Product {
   informations        String
   Category            Category? @relation(fields: [categoryId], references: [id])
   categoryId          String?   @db.ObjectId
+  stock               BigInt?   @default(0)
 }
 
 model Category {
