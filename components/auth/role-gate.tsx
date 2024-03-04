@@ -13,11 +13,7 @@ export const RoleGate = ({ children, allowedRole }: RoleGateProps) => {
   const role = useCurrentRole();
 
   if (role !== allowedRole) {
-    return (
-      <>
-        <FormError message="go away hacker!" />
-      </>
-    );
+    return null;
   }
   return <>{children}</>;
 };

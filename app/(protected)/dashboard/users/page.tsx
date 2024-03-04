@@ -1,8 +1,10 @@
+import { RoleGate } from "@/components/auth/role-gate";
 import { Separator } from "@/components/ui/separator";
 import { UsersTable } from "@/components/users-table/users-table";
+import { UserRole } from "@prisma/client";
 const UsersPage = () => {
   return (
-    <>
+    <RoleGate allowedRole={UserRole.ADMIN}>
       <div className="h-full overflow-y-auto flex-1 flex-col space-y-8 p-8 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
@@ -15,7 +17,7 @@ const UsersPage = () => {
         </div>
         <UsersTable />
       </div>
-    </>
+    </RoleGate>
   );
 };
 

@@ -23,6 +23,8 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { UserButton } from "@/components/auth/user-button";
 import { Logo } from "@/components/Logo";
 import { UserNav } from "@/components/user-nav";
+import { RoleGate } from "@/components/auth/role-gate";
+import { UserRole } from "@prisma/client";
 
 interface DashboardProps {
   defaultLayout: number[] | undefined;
@@ -121,19 +123,20 @@ const Dashboard = ({
                 />
                 <div className="h-[22px]"></div>
 
-                <Separator />
-                <div className="h-[22px]"></div>
-
-                <Nav
-                  isCollapsed={isCollapsed}
-                  links={[
-                    {
-                      href: "/dashboard/users",
-                      title: "Users",
-                      icon: Users,
-                    },
-                  ]}
-                />
+                <RoleGate allowedRole={UserRole.ADMIN}>
+                  <Separator />
+                  <div className="h-[22px]"></div>
+                  <Nav
+                    isCollapsed={isCollapsed}
+                    links={[
+                      {
+                        href: "/dashboard/users",
+                        title: "Users",
+                        icon: Users,
+                      },
+                    ]}
+                  />
+                </RoleGate>
                 <div className="h-[22px]"></div>
               </div>
               <div className="flex items-center justify-center mt-2 mb-2 gap-2 flex-wrap">
