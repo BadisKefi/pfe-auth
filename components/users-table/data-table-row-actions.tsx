@@ -38,6 +38,7 @@ import {
   ModeratorToggelerUserById,
 } from "@/actions/user";
 import { UserRole } from "@prisma/client";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -53,6 +54,7 @@ export function DataTableRowActions<TData>({
   const { edgestore } = useEdgeStore();
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const currentUser = useCurrentUser();
 
   const changedStatus = async (v: string) => {
     console.log(v);
@@ -74,58 +76,59 @@ export function DataTableRowActions<TData>({
   };
   return (
     <>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
-          >
-            <DotsHorizontalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-[160px]">
-          <DropdownMenuItem>Edit</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Status</DropdownMenuSubTrigger>
-            <DropdownMenuSubContent>
-              <DropdownMenuRadioGroup
-                value={status}
-                onValueChange={(v) => changedStatus(v)}
-              >
-                <DropdownMenuRadioItem key={"disabled"} value={"false"}>
-                  disabled
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem key={"activated"} value={"true"}>
-                  activated
-                </DropdownMenuRadioItem>
-              </DropdownMenuRadioGroup>
-            </DropdownMenuSubContent>
-          </DropdownMenuSub>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Role</DropdownMenuSubTrigger>
-            <DropdownMenuSubContent>
-              <DropdownMenuRadioGroup
-                value={role}
-                onValueChange={(v) => changedRole(v)}
-              >
-                <DropdownMenuRadioItem key={"moderator"} value={"MODERATOR"}>
-                  moderator
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem key={"normal"} value={"USER"}>
-                  normal
-                </DropdownMenuRadioItem>
-              </DropdownMenuRadioGroup>
-            </DropdownMenuSubContent>
-          </DropdownMenuSub>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem onSelect={() => setShowDeleteDialog(true)}>
-            Delete <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-
+      {currentUser.id !== userRow.id && userRow.role !== UserRole.ADMIN && (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
+            >
+              <DotsHorizontalIcon className="h-4 w-4" />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-[160px]">
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>Status</DropdownMenuSubTrigger>
+              <DropdownMenuSubContent>
+                <DropdownMenuRadioGroup
+                  value={status}
+                  onValueChange={(v) => changedStatus(v)}
+                >
+                  <DropdownMenuRadioItem key={"disabled"} value={"false"}>
+                    disabled
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem key={"activated"} value={"true"}>
+                    activated
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>Role</DropdownMenuSubTrigger>
+              <DropdownMenuSubContent>
+                <DropdownMenuRadioGroup
+                  value={role}
+                  onValueChange={(v) => changedRole(v)}
+                >
+                  <DropdownMenuRadioItem key={"moderator"} value={"MODERATOR"}>
+                    moderator
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem key={"normal"} value={"USER"}>
+                    normal
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onSelect={() => setShowDeleteDialog(true)}>
+              Delete <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
       <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
         <AlertDialogContent>
           <AlertDialogHeader>

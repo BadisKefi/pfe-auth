@@ -134,13 +134,7 @@ export const columns: ColumnDef<z.infer<typeof UserTableSchema>>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const currentUser = useCurrentUser();
-      return (
-        currentUser.id !== row.original.id &&
-        row.original.role !== UserRole.ADMIN && (
-          <DataTableRowActions row={row} />
-        )
-      );
+      return <DataTableRowActions row={row} />;
     },
   },
 ];
