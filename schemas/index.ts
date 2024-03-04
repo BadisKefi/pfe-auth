@@ -42,14 +42,15 @@ export const CategoryTableSchema = z.object({
 });
 
 export const UserTableSchema = z.object({
-  id: z.string().nullable(),
+  id: z.string(),
   name: z.string().nullable(),
-  role: z.enum([UserRole.ADMIN, UserRole.USER, UserRole.MODERATOR]).nullable(),
-  email: z.string().email().nullable(),
-  createdAt: z.date().nullable(),
-  updatedAt: z.date().nullable(),
-  isActive: z.boolean().nullable(),
-  isTwoFactorAnabled: z.boolean().nullable(),
+  role: z.enum([UserRole.ADMIN, UserRole.USER, UserRole.MODERATOR]),
+  image: z.string().nullable(),
+  email: z.string().nullable(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+  isActive: z.boolean(),
+  isTwoFactorAnabled: z.boolean(),
 });
 
 // auth

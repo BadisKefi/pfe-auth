@@ -29,6 +29,10 @@ export const ActiveToggelerUserById = async ({ id }: { id: String }) => {
 export const ReadAllUsersWithoutPassword = async () => {
   try {
     const users = await db.user.findMany();
+    console.log("db users are down:");
+    console.log(users);
+    console.log("db users are up:");
+
     if (!users) return { error: "no users", data: null };
     return { success: "got users", data: users };
   } catch (e) {

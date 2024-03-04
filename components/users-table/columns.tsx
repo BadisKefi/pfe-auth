@@ -17,6 +17,10 @@ import { DataTableRowActions } from "./data-table-row-actions";
 import { z } from "zod";
 import { UserTableSchema } from "@/schemas";
 import Image from "next/image";
+import avatarexemple from "@/public/avatars/04.png";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { UserRole } from "@prisma/client";
 
 export const columns: ColumnDef<z.infer<typeof UserTableSchema>>[] = [
   {
@@ -43,7 +47,26 @@ export const columns: ColumnDef<z.infer<typeof UserTableSchema>>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-
+  {
+    accessorKey: "image",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Avatar" />
+    ),
+    cell: ({ row }) => {
+      const image = row.original.image;
+      return (
+        <div className="w-9 h-9">
+          <Image
+            src={image || (avatarexemple as StaticImport)}
+            alt="avatar of a user"
+            width={86}
+            height={86}
+            className="rounded-full"
+          />
+        </div>
+      );
+    },
+  },
   {
     accessorKey: "name",
     header: ({ column }) => (
@@ -110,6 +133,14 @@ export const columns: ColumnDef<z.infer<typeof UserTableSchema>>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
+    cell: ({ row }) => {
+      const currentUser = useCurrentUser();
+      return (
+        currentUser.id !== row.original.id &&
+        row.original.role !== UserRole.ADMIN && (
+          <DataTableRowActions row={row} />
+        )
+      );
+    },
   },
 ];
