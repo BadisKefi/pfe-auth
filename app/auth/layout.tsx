@@ -34,6 +34,7 @@ export default function AuthenticationLayout({
           >
             Login
           </Link>
+
           <div>
             <ModeToggle />
           </div>
@@ -87,13 +88,10 @@ export default function AuthenticationLayout({
                 faster than ever before.&rdquo;
               </p>
               <p className="text-lg">
-                &ldquo;login for testing with admin : badis.web.dev@gmail.com &
-                same for password.&rdquo;
+                &ldquo;want to test ? create an account and i will turn you
+                admin.&rdquo;
               </p>
-              <p className="text-lg">
-                &ldquo;login for testing with moderator : badiskefi@gmail.com &
-                same for password.&rdquo;
-              </p>
+
               <footer className="text-sm">By Developers</footer>
             </blockquote>
           </div>

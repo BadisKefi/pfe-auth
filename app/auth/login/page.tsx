@@ -22,6 +22,10 @@ export default function LoginPage() {
         <UserLoginForm />
         <Social />
         <p className="px-8 text-center text-sm text-muted-foreground">
+          &ldquo;want to test ? create an account and i will turn you admin, if
+          i didn't do that just tell me.&rdquo;
+        </p>
+        <p className="px-8 text-center text-sm text-muted-foreground">
           don&apos;t have an account ? click{" "}
           <Link
             href="/auth/register"
