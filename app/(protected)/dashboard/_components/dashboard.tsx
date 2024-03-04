@@ -59,7 +59,7 @@ const Dashboard = ({
               sizes
             )}`;
           }}
-          className="h-full max-h-[800px] items-stretch"
+          className="h-full items-stretch"
         >
           <ResizablePanel
             defaultSize={defaultLayout[0]}
@@ -95,7 +95,9 @@ const Dashboard = ({
                   />
                 </div>
                 <div className="h-[22px]"></div>
-                {/* <Separator /> */}
+                <Separator />
+                <div className="h-[22px]"></div>
+
                 <Nav
                   isCollapsed={isCollapsed}
                   links={[
@@ -114,6 +116,16 @@ const Dashboard = ({
                       title: "Categories",
                       icon: Group,
                     },
+                  ]}
+                />
+                <div className="h-[22px]"></div>
+
+                <Separator />
+                <div className="h-[22px]"></div>
+
+                <Nav
+                  isCollapsed={isCollapsed}
+                  links={[
                     {
                       href: "/dashboard/users",
                       title: "Users",
@@ -121,6 +133,7 @@ const Dashboard = ({
                     },
                   ]}
                 />
+                <div className="h-[22px]"></div>
               </div>
               <div className="flex justify-center items-center gap-2 flex-col mb-2">
                 <ModeToggle />

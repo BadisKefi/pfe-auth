@@ -20,9 +20,12 @@ interface NavProps {
     icon: LucideIcon;
   }[];
 }
+import { usePathname } from "next/navigation";
 
 export function Nav({ links, isCollapsed }: NavProps) {
-  const [selected, setSelected] = useState(links[0].href);
+  const pathname = usePathname();
+
+  // const [selected, setSelected] = useState(links[0].href);
   return (
     <div
       data-collapsed={isCollapsed}
@@ -35,14 +38,14 @@ export function Nav({ links, isCollapsed }: NavProps) {
               <TooltipTrigger asChild>
                 <Link
                   href={link.href}
-                  onClick={() => setSelected(link.href)}
+                  // onClick={() => setSelected(link.href)}
                   className={cn(
                     buttonVariants({
-                      variant: selected === link.href ? "default" : "ghost",
+                      variant: pathname === link.href ? "default" : "ghost",
                       size: "icon",
                     }),
                     "h-9 w-9",
-                    link.href === selected &&
+                    link.href === pathname &&
                       "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
                   )}
                 >
@@ -58,13 +61,13 @@ export function Nav({ links, isCollapsed }: NavProps) {
             <Link
               key={index}
               href={link.href}
-              onClick={() => setSelected(link.href)}
+              // onClick={() => setSelected(link.href)}
               className={cn(
                 buttonVariants({
-                  variant: selected === link.href ? "default" : "ghost",
+                  variant: pathname === link.href ? "default" : "ghost",
                   size: "sm",
                 }),
-                link.href === selected &&
+                link.href === pathname &&
                   "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
                 "justify-start"
               )}
