@@ -3,5 +3,8 @@ import { useSession } from "next-auth/react";
 
 export const useCurrentUser = (): ExtendedUser => {
   const session = useSession();
-  return session.data?.user as ExtendedUser;
+  if (session && session.data && session.data.user)
+    return session.data.user as ExtendedUser;
+
+  return {} as ExtendedUser;
 };

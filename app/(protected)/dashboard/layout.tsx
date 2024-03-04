@@ -1,9 +1,5 @@
 import { cookies } from "next/headers";
 import Dashboard from "./_components/dashboard";
-import { UserRole } from "@prisma/client";
-import { getCurrentRole } from "@/lib/current-role";
-import { FormError } from "@/components/form-error";
-import { UserButton } from "@/components/auth/user-button";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   const layout = cookies().get("react-resizable-panels:layout");

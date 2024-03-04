@@ -1,6 +1,4 @@
-import { Separator } from "@/components/ui/separator";
 import { ProductsTable } from "@/components/products-table/products-table";
-import { CreateProductButton } from "@/components/create-product-button";
 const ProductsPage = () => {
   return (
     <>
@@ -14,9 +12,7 @@ const ProductsPage = () => {
               Here&apos;s a list of your products!
             </p>
           </div>
-          <div className="flex items-center space-x-2">
-            <CreateProductButton />
-          </div>
+          <div className="flex items-center space-x-2"></div>
         </div>
         <ProductsTable />
       </div>

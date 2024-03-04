@@ -22,6 +22,7 @@ import { useTheme } from "next-themes";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { UserButton } from "@/components/auth/user-button";
 import { Logo } from "@/components/Logo";
+import { UserNav } from "@/components/user-nav";
 
 interface DashboardProps {
   defaultLayout: number[] | undefined;
@@ -135,12 +136,18 @@ const Dashboard = ({
                 />
                 <div className="h-[22px]"></div>
               </div>
-              <div className="flex justify-center items-center gap-2 flex-col mb-2">
+              <div className="flex items-center justify-center mt-2 mb-2 gap-2 flex-wrap">
+                <UserNav />
+                <Separator
+                  orientation={isCollapsed ? "horizontal" : "vertical"}
+                />
                 <ModeToggle />
+              </div>
+              {/* <div className="flex justify-center items-center gap-2 flex-col mb-2">
                 <div>
                   <UserButton />
                 </div>
-              </div>
+              </div> */}
             </div>
           </ResizablePanel>
           <ResizableHandle withHandle />
