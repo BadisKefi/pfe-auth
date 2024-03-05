@@ -46,6 +46,11 @@ enum UserRole {
   USER
 }
 
+enum UserStatus {
+  ACTIVATED
+  DISABLED
+}
+
 model User {
   id                    String                 @id @default(auto()) @map("_id") @db.ObjectId
   name                  String?
@@ -54,7 +59,7 @@ model User {
   image                 String?
   password              String?
   role                  UserRole               @default(USER)
-  isActive              Boolean                @default(true)
+  status                UserStatus             @default(ACTIVATED)
   accounts              Account[]
   isTwoFactorAnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?

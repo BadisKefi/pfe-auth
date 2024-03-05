@@ -34,10 +34,10 @@ import { useState, useTransition } from "react";
 import { useEdgeStore } from "@/lib/edgestore";
 import { useRouter } from "next/navigation";
 import {
-  ActiveToggelerUserById,
+  SetUserStatusByIdAndStatus,
   ModeratorToggelerUserById,
 } from "@/actions/user";
-import { UserRole } from "@prisma/client";
+import { UserRole, UserStatus } from "@prisma/client";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
 interface DataTableRowActionsProps<TData> {
@@ -49,7 +49,7 @@ export function DataTableRowActions<TData>({
 }: DataTableRowActionsProps<TData>) {
   const userRow = UserTableSchema.parse(row.original);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-  const [status, setStatus] = useState(userRow.isActive.toString());
+  const [status, setStatus] = useState<UserStatus>(userRow.status);
   const [role, setRole] = useState(userRow.role);
   const { edgestore } = useEdgeStore();
   const [isPending, startTransition] = useTransition();
@@ -57,22 +57,24 @@ export function DataTableRowActions<TData>({
   const currentUser = useCurrentUser();
 
   const changedStatus = async (v: string) => {
-    console.log(v);
-    if (
-      (v === "false" && userRow.isActive !== false) ||
-      (v === "true" && userRow.isActive !== true)
-    )
-      await ActiveToggelerUserById({ id: userRow.id });
-    setStatus(v);
+    const statusTemp: UserStatus =
+      v === "disabled" ? UserStatus.DISABLED : UserStatus.ACTIVATED;
+
+    await SetUserStatusByIdAndStatus({ id: userRow.id, status: statusTemp });
+    setStatus(statusTemp);
+    router.refresh();
   };
   const changedRole = async (v: string) => {
-    console.log(v);
-    if (
-      (v === "MODERATOR" && userRow.role !== UserRole.MODERATOR) ||
-      (v === "USER" && userRow.role !== UserRole.USER)
-    )
-      await ModeratorToggelerUserById({ id: userRow.id });
-    setStatus(v);
+    const roleTemp: UserRole =
+      v === "ADMIN"
+        ? UserRole.ADMIN
+        : v === "MODERATOR"
+        ? UserRole.MODERATOR
+        : UserRole.USER;
+
+    const updatedUser = await ModeratorToggelerUserById({ id: userRow.id });
+    setRole(updatedUser.updatedUser?.role || currentUser.role);
+    router.refresh();
   };
   return (
     <>
@@ -97,10 +99,10 @@ export function DataTableRowActions<TData>({
                   value={status}
                   onValueChange={(v) => changedStatus(v)}
                 >
-                  <DropdownMenuRadioItem key={"disabled"} value={"false"}>
+                  <DropdownMenuRadioItem key={"disabled"} value={"disabled"}>
                     disabled
                   </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem key={"activated"} value={"true"}>
+                  <DropdownMenuRadioItem key={"activated"} value={"activated"}>
                     activated
                   </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>

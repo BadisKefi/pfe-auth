@@ -1,4 +1,4 @@
-import { UserRole } from "@prisma/client";
+import { UserRole, UserStatus } from "@prisma/client";
 
 export type Product = {
   id?: string;
@@ -38,4 +38,5 @@ export type User = {
   role: UserRole;
   email: string;
   password: string;
+  status: UserStatus;
 };

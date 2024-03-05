@@ -1,4 +1,4 @@
-import { UserRole } from "@prisma/client";
+import { UserRole, UserStatus } from "@prisma/client";
 import * as z from "zod";
 
 // main
@@ -49,7 +49,7 @@ export const UserTableSchema = z.object({
   email: z.string().nullable(),
   createdAt: z.date(),
   updatedAt: z.date(),
-  isActive: z.boolean(),
+  status: z.enum([UserStatus.ACTIVATED, UserStatus.DISABLED]),
   isTwoFactorAnabled: z.boolean(),
 });
 

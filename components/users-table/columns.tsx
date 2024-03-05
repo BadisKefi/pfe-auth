@@ -20,7 +20,7 @@ import Image from "next/image";
 import avatarexemple from "@/public/avatars/04.png";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { UserRole } from "@prisma/client";
+import { UserRole, UserStatus } from "@prisma/client";
 
 export const columns: ColumnDef<z.infer<typeof UserTableSchema>>[] = [
   {
@@ -129,6 +129,56 @@ export const columns: ColumnDef<z.infer<typeof UserTableSchema>>[] = [
           </span>
         </div>
       );
+    },
+  },
+  {
+    accessorKey: "role",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Role" />
+    ),
+    cell: ({ row }) => {
+      const role: string = row.getValue("role");
+      return (
+        <div>
+          <Badge
+            variant={
+              role === UserRole.ADMIN
+                ? "blue"
+                : role === UserRole.MODERATOR
+                ? "orange"
+                : "yello"
+            }
+          >
+            {role}
+          </Badge>
+        </div>
+      );
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
+  },
+  {
+    accessorKey: "status",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Status" />
+    ),
+    cell: ({ row }) => {
+      const status: string = row.getValue("status");
+      return (
+        <div>
+          <Badge
+            variant={
+              status === UserStatus.DISABLED ? "destructive" : "secondary"
+            }
+          >
+            {status}
+          </Badge>
+        </div>
+      );
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
     },
   },
   {

@@ -1,9 +1,15 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { UserRole } from "@prisma/client";
+import { UserRole, UserStatus } from "@prisma/client";
 
-export const ActiveToggelerUserById = async ({ id }: { id: String }) => {
+export const SetUserStatusByIdAndStatus = async ({
+  id,
+  status,
+}: {
+  id: String;
+  status: UserStatus;
+}) => {
   try {
     const existingUser = await db.user.findFirst({
       where: { id: id as string },
@@ -15,15 +21,15 @@ export const ActiveToggelerUserById = async ({ id }: { id: String }) => {
         id: id as string,
       },
       data: {
-        isActive: !existingUser.isActive,
+        status,
       },
     });
     return {
-      success: `user activation was fliped to ${updatedUser.isActive}!`,
+      success: `user status to ${updatedUser.status}!`,
       updatedUser: updatedUser,
     };
   } catch (e) {
-    return { error: "couldn't toggle activation on user" };
+    return { error: "couldn't change user status" };
   }
 };
 export const ReadAllUsersWithoutPassword = async () => {
