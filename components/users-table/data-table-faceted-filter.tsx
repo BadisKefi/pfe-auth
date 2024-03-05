@@ -26,7 +26,7 @@ interface DataTableFacetedFilterProps<TData, TValue> {
   title?: string;
   options: {
     label: string;
-    value: string | boolean;
+    value: string;
     icon?: React.ComponentType<{ className?: string }>;
   }[];
 }
@@ -68,7 +68,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                     .map((option) => (
                       <Badge
                         variant="secondary"
-                        key={option.value.toString()}
+                        key={option.value}
                         className="rounded-sm px-1 font-normal"
                       >
                         {option.label}
@@ -87,15 +87,15 @@ export function DataTableFacetedFilter<TData, TValue>({
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
               {options.map((option) => {
-                const isSelected = selectedValues.has(option.value.toString());
+                const isSelected = selectedValues.has(option.value);
                 return (
                   <CommandItem
                     key={option.value}
                     onSelect={() => {
                       if (isSelected) {
-                        selectedValues.delete(option.value.toString());
+                        selectedValues.delete(option.value);
                       } else {
-                        selectedValues.add(option.value.toString());
+                        selectedValues.add(option.value);
                       }
                       const filterValues = Array.from(selectedValues);
                       column?.setFilterValue(
