@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import Dashboard from "./_components/dashboard";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   const layout = cookies().get("react-resizable-panels:layout");
@@ -18,7 +19,7 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
         navCollapsedSize={4}
         defaultCollapsed={defaultCollapsed}
       >
-        {children}
+        <ScrollArea className="h-full">{children}</ScrollArea>
       </Dashboard>
     </div>
   );

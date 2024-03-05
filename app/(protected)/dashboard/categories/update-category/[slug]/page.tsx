@@ -1,12 +1,13 @@
 import { ReadCategoryById } from "@/actions/category-action";
 import { GoBackToListingCategoriesButton } from "@/components/go-back-to-listing-categories-button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { UpdateCategoryForm } from "@/components/update-category-form";
 const UpdateCategoryPage = async ({ params }: { params: { slug: string } }) => {
   const res = await ReadCategoryById({ id: params.slug });
   return (
     <>
-      <div className="h-full overflow-y-auto flex-1 flex-col space-y-8 p-8 md:flex">
+      <div className="flex-1 flex-col space-y-8 p-8 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">
